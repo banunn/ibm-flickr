@@ -11,8 +11,6 @@ var app = angular.module('ibApp', [])
     }).success(function(data) {
       $scope.data = data.photos;
       $scope.loading = false;
-    }).error(function(){
-      console.log('No Data From Flickr Was Returned');  
     })
   })
   .directive('flickrItem', function() {
