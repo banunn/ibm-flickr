@@ -6,21 +6,42 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/main-dist.css">
-
+        <link rel="stylesheet" href="css/main.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <link rel="stylesheet" href="https://rawgithub.com/rustygreen/angular-flickr/master/dist/angular-flickr.min.css">
     </head>
-    <body>
+    <body ng-app="myApp">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <aside class="left-nav">
+          <a href="" class="brand">IBM FLickr</a>
+          <nav class="nav-primary">
+            <ul>
+              <li><a href="">Link</a></li>
+              <li><a href="">Link</a></li>
+              <li><a href="">Link</a></li>
+              <li><a href="">Link</a></li>
+            </ul>
+          </nav>
+        </aside>
+        <section class="primary-content" ng-controller="MainCtrl">
+          <ul>
+            <li ng-repeat="ph in data.photo | orderBy:'title'">
+              <a href="">
+                <div style="background-image:url('https://farm{{ph.farm}}.staticflickr.com/{{ph.server}}/{{ph.id}}_{{ph.secret}}.jpg;');">
+                  <h1>{{ph.title}}</h1>
+                </div>
+              </a>
+            </li>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
-        <script src="js/plugins.js"></script>
+          </ul>
+        </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/plugins.js"></script>
     </body>
 </html>

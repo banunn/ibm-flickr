@@ -1,1 +1,10 @@
 @import 'helpers/_normalize.scss';
+
+// Colors
+@import 'helpers/_ibm-colors.scss';
+
+// Layout * Colors
+@import 'components/_general.scss';
+
+@import 'components/_left-nav.scss';
+@import 'components/_primary-content.scss';
