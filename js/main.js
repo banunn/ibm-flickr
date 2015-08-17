@@ -1,5 +1,5 @@
 var app = angular.module('ibApp', [])
-  .controller('MainCtrl', function($scope, $http, $filter) {
+  .controller('feedControl', function($scope, $http, $filter) {
     var orderBy = $filter('orderBy');
     $http({
       method: 'JSONP',
