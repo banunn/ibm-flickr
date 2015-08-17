@@ -1,19 +1,38 @@
 .primary-content {
-width: 100%;
-padding: 25px;
+  width: calc(100% - 250px);
+  padding: 25px;
+  transform: translateX(250px);
+  transition: transform .45s;
+  margin-top: 25px;
+  min-width: 480px;
+
+  .is-not-expanded & {
+    transform: translateX(0px);
+    width: 100%;
+  }
+
   ul {
     margin: 0;
     padding:0;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     li {
       position: relative;
-      @media(min-width: 65em){
-        max-width: calc(33% - 2em);
+      border: 1px solid color('blue', 6);
+      background: #fff;
+      transition: all .35s ease-out;
+      &:hover {
+          transition: box-shadow .35s ease-in-out;
+          box-shadow: 0px 26px 12px -20px rgba(0, 0, 0, 0.50);
+      }
+      @media(min-width: 70em){
+        max-width: calc(32% - 1em);
+        flex-basis: calc(33% - 1em);
         margin:1em;
         height: 325px;
-        flex-basis: calc(33% - 2em);
+        transition: flex-basis .45s, max-width .45s;
         &:nth-of-type(3n+1){
           margin-left: 0;
         }
@@ -22,7 +41,7 @@ padding: 25px;
         }
       }
 
-      @media(max-width: 65em){
+      @media(max-width: 70em){
         flex-basis: calc(50% - 1em);
         margin:1em;
         height: 215px;
@@ -37,7 +56,7 @@ padding: 25px;
       @media(max-width: 40em){
         flex-basis: 100%;
         margin: .5em 0 .5em 0;
-        height: 185px;
+        height: 225px;
       }
       div {
         position: absolute;
@@ -47,10 +66,35 @@ padding: 25px;
         right:5px;
         background-size: cover;
         padding: 5px;
-        border: 1px solid color('red', 6);
-        transition: all .35s ease-out;
+        text-align: center;
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          top:0px;
+          left: 0px;
+          right: 0px;
+          bottom: 0px;
+          z-index: 70;
+          background: rgba(black, .45);
+          transition: opacity .45s ease;
+        }
         &:hover {
-          box-shadow: 0px 26px 12px -20px rgba(0, 0, 0, 0.50);
+          &:after {
+            opacity: 0;
+          }
+        }
+
+        h1 {
+          color: #fff;
+          position: absolute;
+          bottom: 15px;
+          left: 15px;
+          margin:0;
+          font-weight: 200;
+          z-index: 80;
+          font-size: 1.25em;
+          text-transform: capitalize;
         }
      }
     }

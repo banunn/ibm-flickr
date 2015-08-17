@@ -1,0 +1,10 @@
+<ul>
+  <li ng-repeat="ph in data.photo | orderBy:'title' | filter:searchText">
+    <a href="">
+      <div style="background-image:url('https://farm{{ph.farm}}.staticflickr.com/{{ph.server}}/{{ph.id}}_{{ph.secret}}.jpg;');">
+        <h1>{{ph.title}}</h1>
+      </div>
+    </a>
+  </li>
+
+</ul>

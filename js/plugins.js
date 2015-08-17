@@ -22,3 +22,33 @@
 }());
 
 // Place any jQuery/helper plugins in here.
+
+(function($) {
+
+    var $window = $(window),
+        $html = $('.wrap');
+
+    $window.resize(function resize(){
+        if ($window.width() < 960) {
+            return $html.addClass('is-not-expanded').removeClass('is-expanded');
+        }
+
+        $html.removeClass('is-not-expanded').addClass('is-expanded');
+    }).trigger('resize');
+
+$('.nav-toggle').click(function(){
+    var wrapHasExpandedClass = $('.wrap').hasClass('is-expanded');
+    var wrapHasNotExpandedClass = $('.wrap').hasClass('is-not-expanded');
+
+    if(wrapHasExpandedClass){
+         $('.wrap').addClass('is-not-expanded');
+         $('.wrap').removeClass('is-expanded');
+    }
+
+    if(wrapHasNotExpandedClass){
+         $('.wrap').addClass('is-expanded');
+         $('.wrap').removeClass('is-not-expanded');
+    }
+});
+
+})( jQuery );
