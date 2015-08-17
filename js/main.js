@@ -1,4 +1,4 @@
-var app = angular.module('myApp', [])
+var app = angular.module('ibApp', [])
   .controller('MainCtrl', function($scope, $http, $filter) {
     var orderBy = $filter('orderBy');
     $http({
@@ -11,11 +11,9 @@ var app = angular.module('myApp', [])
     }).success(function(data) {
       $scope.data = data.photos;
       $scope.loading = false;
+    }).error(function(){
+      console.log('No Data From Flickr Was Returned');  
     })
-
-    $scope.order = function(predicate, reverse) {
-      $scope.data = orderBy($scope.data, predicate, reverse);
-    };
   })
   .directive('flickrItem', function() {
     return {
