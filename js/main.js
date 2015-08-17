@@ -1,5 +1,5 @@
-var app = angular.module('myApp', [])
-  .controller('MainCtrl', function($scope, $http, $filter) {
+var app = angular.module('ibApp', [])
+  .controller('feedControl', function($scope, $http, $filter) {
     var orderBy = $filter('orderBy');
     $http({
       method: 'JSONP',
@@ -11,11 +11,9 @@ var app = angular.module('myApp', [])
     }).success(function(data) {
       $scope.data = data.photos;
       $scope.loading = false;
+    }).error(function(){
+        console.log('No data was returned');
     })
-
-    $scope.order = function(predicate, reverse) {
-      $scope.data = orderBy($scope.data, predicate, reverse);
-    };
   })
   .directive('flickrItem', function() {
     return {
